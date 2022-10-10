@@ -1,0 +1,4 @@
+dist/
+example/dist/
+src/asset/iconfont.js
+src/asset/iconfont-backup.js
