@@ -1,0 +1,6 @@
+@import '../../styles/constants.scss';
+
+.#{$EDITOR_CLS_PREFIX}Active {
+  background-color: var(--THEME-COLOR-PALE);
+  color: var(--THEME-COLOR);
+}

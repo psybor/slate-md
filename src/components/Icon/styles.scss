@@ -1,0 +1,13 @@
+@import '../../styles/constants.scss';
+
+.#{$EDITOR_CLS_PREFIX}IconBox {
+  color: #5e5d5d;
+}
+
+.#{$EDITOR_CLS_PREFIX}Icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}

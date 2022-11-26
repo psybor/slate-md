@@ -1,0 +1,5 @@
+@import '../../styles/constants.scss';
+
+.#{$EDITOR_CLS_PREFIX}Toolbar {
+  border: 1px solid green;
+}

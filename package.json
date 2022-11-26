@@ -28,7 +28,7 @@
     "slate-react": ">=0.65.3"
   },
   "lint-staged": {
-    "*.{css,md,js,jsx,json,ts,tsx}": [
+    "*.{css,scss,md,js,jsx,json,ts,tsx}": [
       "prettier --write"
     ]
   },
@@ -67,12 +67,14 @@
     "cssnano": "^4",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "node-sass": "^7.0.3",
     "postcss": "^8",
     "postcss-preset-env": "6",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-is": "^16.8.0",
     "rollup-plugin-postcss": "4",
+    "sass": "^1.55.0",
     "size-limit": "^8.1.0",
     "slate": "^0.82.1",
     "slate-react": "^0.83.1",
