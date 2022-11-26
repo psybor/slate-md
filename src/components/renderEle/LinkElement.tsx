@@ -2,7 +2,7 @@ import React from 'react';
 import { useFocused, useSelected } from 'slate-react';
 import { InlineChromiumBugfix } from './InlineChromiumBugfix';
 
-export const LinkElement = (props) => {
+export const LinkElement = props => {
   const selected = useSelected();
   const focused = useFocused();
   console.log('selected, focus', selected, focused);

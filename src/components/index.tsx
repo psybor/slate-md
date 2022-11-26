@@ -19,7 +19,7 @@ export const EditorValue = React.forwardRef(
     ref: Ref<HTMLDivElement> | undefined
   ) => {
     const textLines = value.document.nodes
-      .map((node) => node.text)
+      .map(node => node.text)
       .toArray()
       .join('\n');
     return (

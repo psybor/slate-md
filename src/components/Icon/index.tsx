@@ -7,7 +7,7 @@ interface IconFontProps {
   type: string;
 }
 
-export const RichIcon: FC<IconFontProps> = (props) => {
+export const RichIcon: FC<IconFontProps> = props => {
   const { type } = props;
   return (
     <svg aria-hidden="true" className={`${getClsPrefix('Icon')}`}>

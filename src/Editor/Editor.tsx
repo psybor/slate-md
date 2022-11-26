@@ -76,7 +76,7 @@ const isBlockActive = (editor, format, blockType = 'type') => {
   const [match] = Array.from(
     SlateEditor.nodes(editor, {
       at: SlateEditor.unhangRange(editor, selection),
-      match: (n) =>
+      match: n =>
         !SlateEditor.isEditor(n) &&
         SlateElement.isElement(n) &&
         n[blockType] === format,
@@ -119,7 +119,7 @@ const MarkButton = ({ format, icon }) => {
   return (
     <ToolbarBtn
       active={isMarkActive(editor, format)}
-      onMouseDown={(event) => {
+      onMouseDown={event => {
         event.preventDefault();
         toggleMark(editor, format);
       }}
@@ -138,7 +138,7 @@ const BlockButton = ({ format, icon }) => {
         format,
         TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type'
       )}
-      onMouseDown={(event) => {
+      onMouseDown={event => {
         event.preventDefault();
         toggleBlock(editor, format);
       }}
@@ -148,11 +148,11 @@ const BlockButton = ({ format, icon }) => {
   );
 };
 
-export const Editor: FC<Props> = (props) => {
+export const Editor: FC<Props> = props => {
   // 创建一个不会在渲染中变化的 Slate 编辑器对象。
   const editor = useMemo(() => withReact(createEditor()), []);
   const { onKeyDown, ...rest } = props;
-  const _onKeyDown = (ev) => {
+  const _onKeyDown = ev => {
     if (ev.key === ' ') {
       console.log('ev:::, ev.key:', ev.key);
     }
@@ -164,7 +164,7 @@ export const Editor: FC<Props> = (props) => {
       // @ts-ignore
       const [match] = SlateEditor.nodes(editor, {
         // @ts-ignore
-        match: (n) => n.type === 'bold',
+        match: n => n.type === 'bold',
       });
       debugger;
       Transforms.setNodes(
@@ -174,7 +174,7 @@ export const Editor: FC<Props> = (props) => {
           bold: true,
         },
         {
-          match: (n) => Text.isText(n),
+          match: n => Text.isText(n),
           split: true,
         }
       );

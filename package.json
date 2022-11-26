@@ -27,11 +27,6 @@
     "slate": ">=0.65.3",
     "slate-react": ">=0.65.3"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
   "prettier": {
     "printWidth": 80,
     "semi": true,
