@@ -28,3 +28,4 @@ example/dist
 .cache
 .parcel-cache
 example/.cache
+storybook-static
