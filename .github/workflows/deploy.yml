@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,27 +30,38 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "14"
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
       - name: Install dependencies
         run: yarn install
       - name: build example
         run: |
           yarn build-example
           echo "the pwd directory: `pwd`"
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire directory
-          path: './dist'
-  # Deployment job
-#  deploy:
-#    environment:
-#      name: github-pages
-#      url: ${{ steps.deployment.outputs.page_url }}
-#    runs-on: ubuntu-latest
-#    needs: build
-#    steps:
-#      - name: Deploy to GitHub Pages
-#        id: deployment
-#        uses: actions/deploy-pages@v1
+      - name: set ssh key # 临时设置 ssh key
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{secrets.PRIVATE_DEPLOY}}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan "github.com" >> ~/.ssh/known_hosts
+          echo "---------- set ssh-key ok ----------"
+      - name: download and replace # 下载现有文件，替换
+        run: |
+          git clone git@github.com:psybor/psybor.github.io.git
+          echo "---------- git clone ok ----------"
+          rm -rf ./psybor.github.io/*
+          cd psybor.github.io
+          echo "the pwd directory: `pwd`"
+#          cp -r ./_book/* ./psybor.github.io ## 用最新构建出来的文件，替换现有的
+#          echo "---------- replace ok ----------"
+#      - name: upload # 上传文件
+#        run: |
+#          cd ./psybor.github.io
+#          git config user.name "github-actions"
+#          git config user.email "github-actions@github.com"
+#          echo "---------- begin git status ----------"
+#          echo `git status`
+#          echo "---------- end git status ----------"
+#          git add .
+#          git commit -m "update by github actions"
+#          git push origin main
+#      - name: delete ssh key # 删除 ssh key
+#        run: rm -rf ~/.ssh/id_rsa
