@@ -20,7 +20,7 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build-example": "cd ./example && yarn build"
+    "build-example": "cd ./example && yarn && yarn build"
   },
   "peerDependencies": {
     "react": ">=16",
