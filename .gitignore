@@ -24,6 +24,7 @@ docker/.build
 /nat/subdomain.txt
 
 /dist
+coverage
 example/dist
 .cache
 .parcel-cache

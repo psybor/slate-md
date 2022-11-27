@@ -3,4 +3,5 @@ example/dist/
 example/.cache/
 example/.parcel-cache/
 src/assets/font_1347995_8606dsxwtx7/
+coverage/
 storybook-static/
